@@ -1,22 +1,16 @@
 #include <iostream>
-#include <Eigen/Dense>
-#include <boost/gil/gil_all.hpp>
-#include <boost/gil/extension/io/png_io.hpp>
+#include "Image/Image.h"
 
-using Eigen::MatrixXd;
 
 int main(int argc, char*argv[])
 {
-	using namespace boost::gil;
-	rgb8_image_t img;
-	png_read_image("C:/Users/Leonhardt/Pictures/t.PNG", img);
-	png_write_view("C:/Users/Leonhardt/Pictures/t1.PNG", img);
-	MatrixXd m(2, 2);
-	m(0, 0) = 3;
-	m(1, 0) = 2.5;
-	m(0, 1) = -1;
-	m(1, 1) = m(1, 0) + m(0, 1);
-	std::cout << m << std::endl;
-	std::getchar();
-	return 0;
+	auto test_image = image_io("C:/Users/Leonhardt/Pictures/t.PNG");
+
+    auto image =test_image.get_image();
+
+
+    test_image.write("C:/Users/Leonhardt/Pictures/t.jpeg", image);
+
+    std::getchar();
+    return 0;
 }
