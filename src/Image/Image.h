@@ -14,7 +14,6 @@ namespace stb
 
 using Eigen::Matrix;
 
-
 template<typename T>
 using image_matrix = Matrix<T, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>;
 
