@@ -11,7 +11,7 @@ int main(int argc, char*argv[])
         std::cout << "hello world" << std::endl;
     });
 
-	auto test_image = image_io("C:/Users/Leonhardt/Pictures/t.PNG");
+    auto test_image = image_io("./t.png");
     image_matrix<float> image = test_image.get_image().cast<float>();
 
     image_matrix<float> sobel_h(3, 3);
@@ -31,7 +31,7 @@ int main(int argc, char*argv[])
     
 
 
-    test_image.write("C:/Users/Leonhardt/Pictures/t.jpeg", result.cast<unsigned char>());
+    test_image.write("./t.jpeg", result.cast<unsigned char>());
 
     std::getchar();
     return 0;
