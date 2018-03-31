@@ -18,4 +18,4 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 target_compile_options(${PROJECT_NAME} PRIVATE ${OpenMP_CXX_FLAGS})
 target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenMP_EXE_LINKER_FLAGS} ${Boost_LIBRARIES})
-target_link_libraries(${PROJECT_NAME} ${TBB_IMPORTED_TARGETS})
+target_link_libraries(${PROJECT_NAME} ${TBB_LIBRARIES})
