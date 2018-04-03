@@ -7,7 +7,7 @@ using namespace tbb;
 using Eigen::Matrix;
 
 template <typename T>
-class Convolution
+class convolution
 {
     void apply_kernel_in_xy_range(image_matrix<T>& result, image_matrix<T>& operand, image_matrix<T>& kernel,
                                   size_t x_begin, size_t x_end, size_t y_begin, size_t y_end)
