@@ -3,6 +3,7 @@
 #include <tbb/parallel_for.h>
 #include "Convolution/Convolution.h"
 #include "Combine/Combine.h"
+#include <chrono>
 
 
 int main(int argc, char*argv[])
@@ -26,11 +27,17 @@ int main(int argc, char*argv[])
     auto combined = image_matrix<float>(image.rows(), image.cols());
 
     //convolution.apply_kernel_sequentially(result, image, sobel_h);
+    const auto start_time = std::chrono::steady_clock::now();
     convolution.apply_kernel_parallel(result_h, image, sobel_h);
     convolution.apply_kernel_parallel(result_v, image, sobel_v);
 
     combine<float> combine;
     combine.combine_matrices_parallel(combined, result_h, result_v);
+
+    const auto end_time = std::chrono::steady_clock::now();
+    const auto diff = end_time - start_time;
+    std::cout << std::chrono::duration<double, std::milli>(diff).count() << " ms" << std::endl;
+
     
 
 
